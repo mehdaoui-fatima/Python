@@ -26,8 +26,6 @@ def main():
         print("AssertionError: the arguments are bad")
     
 
-
-
 if __name__ == "__main__":
     main()
 
