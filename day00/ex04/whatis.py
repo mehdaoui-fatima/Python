@@ -1,10 +1,7 @@
 import sys
 
-
-
-# if the function def doest contain return statement, None is.
+# if the function def doest contain return statement, a default return is None.
 def parity(x: int) -> str:
-
     if (int(x) % 2 == 0):
         return "I'm Even."
     else:
