@@ -2,18 +2,16 @@ from sys import argv
 from ft_filter import ft_filter
 
 
-# doc string 
-# norm 
 def main():
-    """ doc string needed """
-
+    """a program that accepts two arguments: a string(S), and an integer(N). \n 
+    The program output a list of words from S that have a length greater than N."""
     argv_len = len(argv)
     try:
 
-        # if argv_len != 3:
-        #     raise AssertionError("the arguments are bad")
+        if argv_len != 3:
+            raise AssertionError("the arguments are bad")
         s = argv[1]
-        n = argv[2]
+        n = int(argv[2])
         
         assert isinstance(s, str), "the arguments are bad"
         assert isinstance(n, int), "the arguments are bad"
@@ -24,7 +22,8 @@ def main():
     except AssertionError as e:
         print(f"{AssertionError.__name__}: {e}")
 
-
+    except ValueError as e:
+        print("AssertionError: the arguments are bad")
     
 
 
