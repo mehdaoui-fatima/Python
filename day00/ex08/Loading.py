@@ -1,14 +1,9 @@
 
-
-
-# TODO
-# doc string
-# norm and clear code from tests files
-# tests with file correction
-#  understanding well  
-# change input to stdin.read from sys in ex05
-
 def ft_tqdm(lst: range) -> None:
+    """def ft_tqdm(lst: range) -> None\n
+    function that iterates over a range and displays a progress bar
+    and the current iteration count over the total number of elements.
+    """
     total = len(lst)
     bar_width = 70
 
@@ -17,6 +12,5 @@ def ft_tqdm(lst: range) -> None:
         filled = int((i + 1) / total * bar_width)
         bar = '=' * (filled - 1) + '>'
        
-
-        print(f"{percent:3d}%|[{bar:<{bar_width}}]| {i + 1}/{total}", end='\r')
+        print(f"\r{percent:3d}%|[{bar:<{bar_width}}]| {i + 1}/{total}", end='')
         yield elem

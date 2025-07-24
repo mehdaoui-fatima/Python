@@ -1,9 +1,5 @@
 import sys
 
-
-#  pip install flake8
-#  alias norminette=flake8
-
 def main():
     """This program counts the number of upper case letters, lower case letters,
     punctuation marks, spaces, and digits in a given text."""
@@ -23,7 +19,7 @@ def main():
             raise AssertionError("more than one argument is provided")
         elif argv_len < 2:
             print("What is the text to count?")
-            text = input()
+            text = sys.stdin.read()
         else:
             text = sys.argv[1]
 
@@ -35,7 +31,7 @@ def main():
                 counts["lower"] += 1
             elif (letter in "!\"#$%&'()*+,-./:;<=>?@[\\]^_`{|}~"):
                 counts["punctuation"] += 1
-            elif (letter.isspace()):
+            elif (letter.isspace() or letter == '\n'):
                 counts["spaces"] += 1
             elif (letter.isdigit()):
                 counts["digits"] += 1

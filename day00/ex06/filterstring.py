@@ -3,8 +3,9 @@ from ft_filter import ft_filter
 
 
 def main():
-    """a program that accepts two arguments: a string(S), and an integer(N). \n 
+    """a program that accepts two arguments: a string(S), and an integer(N).\n 
     The program output a list of words from S that have a length greater than N."""
+
     argv_len = len(argv)
     try:
 
@@ -22,7 +23,7 @@ def main():
     except AssertionError as e:
         print(f"{AssertionError.__name__}: {e}")
 
-    except ValueError as e:
+    except ValueError:
         print("AssertionError: the arguments are bad")
     
 
