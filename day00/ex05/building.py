@@ -1,7 +1,9 @@
 import sys
 
+
 def main():
-    """This program counts the number of upper case letters, lower case letters,
+    """This program counts the number of upper case letters,
+    lower case letters,
     punctuation marks, spaces, and digits in a given text."""
 
     argv_len = len(sys.argv)
@@ -23,7 +25,6 @@ def main():
         else:
             text = sys.argv[1]
 
-        
         for letter in text:
             if (letter.isupper()):
                 counts["upper"] += 1
@@ -35,7 +36,7 @@ def main():
                 counts["spaces"] += 1
             elif (letter.isdigit()):
                 counts["digits"] += 1
-        
+
         print(f"The text contains {len(text)} characters:")
         print(f"{counts['upper']} upper letters")
         print(f"{counts['lower']} lower letters")
@@ -46,8 +47,9 @@ def main():
     except AssertionError as e:
         print(f"{AssertionError.__name__}: {e}")
 
-    except:
+    except (InterruptedError, EOFError):
         pass
+
 
 if __name__ == "__main__":
     main()
