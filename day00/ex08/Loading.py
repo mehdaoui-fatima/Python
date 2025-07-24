@@ -6,7 +6,7 @@
 # norm and clear code from tests files
 # tests with file correction
 #  understanding well  
-
+# change input to stdin.read from sys in ex05
 
 def ft_tqdm(lst: range) -> None:
     total = len(lst)
