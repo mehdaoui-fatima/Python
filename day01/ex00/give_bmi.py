@@ -5,33 +5,33 @@ def give_bmi(height: list[int | float],
              weight: list[int | float]) -> list[int | float]:
     """
     Calculate the BMI for corresponding elements in height and weight lists.
-
-    Parameters:
-        height (list[int | float]): List of heights in meters.
-        weight (list[int | float]): List of weights in kilograms.
-
-    Returns:
-        list[float]: List of calculated BMI values.
     """
+
     try:
-        height = np.asarray(height)
+        print(len(height))
+        if (len(height) != len(weight) or len(height) == 0):
+            raise ValueError("""lists must be non-empty
+                             and have the same length""")
+
+        # All Returns true if all of the items are True
+        # (or if the iterable is empty)
+        if not all([isinstance(item, (int, float)) for item in height]):
+            raise TypeError("All height elements must be int or float")
+
+        if not all([isinstance(item, (int, float)) for item in weight]):
+            raise TypeError("All weight elements must be int or float")
+
         weight = np.asarray(weight)
+        height = np.asarray(height)
 
-        if weight.shape != height.shape:
-            raise ValueError("height and weight must have same size")
-
-        if weight.dtype not in [np.dtype(int), np.dtype(float)]:
-            raise ValueError("weight list elements must be float or int")
-
-        if height.dtype not in [np.dtype(int), np.dtype(float)]:
-            raise ValueError("height list elements must be float or int")
-
-        if np.any(height == 0):
+        if np.any(height <= 0):
             raise ValueError("height list elements must be > 0")
 
-        return (weight / (height * height)).tolist()
+        bmi_vaues = weight / (height * height)
 
-    except ValueError as e:
+        return bmi_vaues.tolist()
+
+    except (ValueError, TypeError) as e:
         print(f"{type(e).__name__}: {e}")
         return []
 
@@ -40,13 +40,7 @@ def apply_limit(bmi: list[int | float],
                 limit: int) -> list[bool]:
     """
     Compare each value in a list to a specified limit.
-
-    Parameters:
-        bmi (list[int | float]): A list of integers or floats representing BMI.
-        limit (int): The value to compare against.
-
-    Returns:
-        list[bool]: A list of booleans where each element is True if the
+    to retrun a list of booleans where each element is True if the
         BMI value is greater than the limit, and False otherwise.
     """
     return [nb > limit for nb in bmi]
